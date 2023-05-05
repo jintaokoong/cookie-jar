@@ -21,8 +21,8 @@ func RemoveSession(c *fiber.Ctx) error {
 	c.Cookie(&fiber.Cookie{
 		Name:     "refresh_token",
 		Value:    "",
-		SameSite: "lax",
-		MaxAge:   -1,
+		SameSite: "strict",
+		MaxAge:   -1, // setting MaxAge to -1 will delete the cookie
 		HTTPOnly: true,
 	})
 	return c.JSON(fiber.Map{
